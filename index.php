@@ -13,4 +13,11 @@ $app->get(
     }
 );
 
+$app->get(
+    '/root',
+    function () use ($app) {
+        $app->render("root.php");
+    }
+);
+
 $app->run();

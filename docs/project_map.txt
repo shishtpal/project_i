@@ -7,7 +7,7 @@
 		+ Full_name ( first name + middle name + last name )
 		+ Email ( email supplied by user )  -
 		+ MobileNo
-		+ Passowrd (md5 hashed password for user )
+		+ Password (md5 hashed password for user )
 		+ isRoot ( Does user is root or Admin )
 		+ isActive ( Wheather user is active or not )
 		+ whichGroup ( User belongs to which group )
@@ -35,6 +35,7 @@
 			+ noteContent
 			+ Author
 			+ tags ( | seperated list of tags )
+			+ score
 			+ isVerfied
 			+ isPublic
 			+ createdAt ( When user do a POST request to server )
