@@ -6,7 +6,7 @@
 		+ Id ( auto generated id for user ) - Primary  - Autoincrement - unique
 		+ Full_name ( first name + middle name + last name )
 		+ Email ( email supplied by user )  -
-		+ Username ( username given by user ) - UNIQUE
+		+ MobileNo
 		+ Passowrd (md5 hashed password for user )
 		+ isRoot ( Does user is root or Admin )
 		+ isActive ( Wheather user is active or not )
@@ -23,6 +23,7 @@
 			+ noteTitle ( What is title of note given by user )
 			+ noteContent ( What is the content of note )
 			+ tags
+			+ isPublic
 			+ createdAt ( When user did created this note )
 			= User will not be able to access the content of this table.
 			= Even if user did modify the note content that note will be saved into this table.
@@ -35,6 +36,7 @@
 			+ Author
 			+ tags ( | seperated list of tags )
 			+ isVerfied
+			+ isPublic
 			+ createdAt ( When user do a POST request to server )
 			+ modifiedAt ( When user do a PUT request to server )
 + API
@@ -43,14 +45,16 @@
 		= SIGNUP PAGE for normal user
 			Asks for ( = username ) if not exists
 				Loads the full form
-				+ Fullname
+				+ First name
+				+ last name
 				+ Email
+				+ Mobile No
 				+ password
 				+ repeat Password
 				+ captcha or hidden field
 
 		= LOGIN MODAL / Page
-			+ username
+			+ username/email
 			+ password
 			+ hidden field / captcha
 
