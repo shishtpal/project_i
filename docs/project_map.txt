@@ -1,0 +1,91 @@
+= 
++ Login System
+	+ ROOT
+	+ GROUP
+	+ USERS
+		+ Id ( auto generated id for user ) - Primary  - Autoincrement - unique
+		+ Full_name ( first name + middle name + last name )
+		+ Email ( email supplied by user )  -
+		+ Username ( username given by user ) - UNIQUE
+		+ Passowrd (md5 hashed password for user )
+		+ isRoot ( Does user is root or Admin )
+		+ isActive ( Wheather user is active or not )
+		+ whichGroup ( User belongs to which group )
+		+ whoIam ( Code for user )
+		+ status ( What is current status of that user )
+		+ createdAt ( When user did created this account )
+	= Tables
+		+ identity
+		+ noteHistory
+			+ noteId ( Auto generated ID for note )
+			+ userId ( User ID, who save the content to server )
+			+ noteParentId ( Note parent id, when user PUT note to server with an ID )
+			+ noteTitle ( What is title of note given by user )
+			+ noteContent ( What is the content of note )
+			+ tags
+			+ createdAt ( When user did created this note )
+			= User will not be able to access the content of this table.
+			= Even if user did modify the note content that note will be saved into this table.
+			= means full history of any note can be see from here.
+		+ notes
+			+ noteid
+			+ userid
+			+ noteTitle
+			+ noteContent
+			+ Author
+			+ tags ( | seperated list of tags )
+			+ isVerfied
+			+ createdAt ( When user do a POST request to server )
+			+ modifiedAt ( When user do a PUT request to server )
++ API
+	+ /
+	+ /login
+		= SIGNUP PAGE for normal user
+			Asks for ( = username ) if not exists
+				Loads the full form
+				+ Fullname
+				+ Email
+				+ password
+				+ repeat Password
+				+ captcha or hidden field
+
+		= LOGIN MODAL / Page
+			+ username
+			+ password
+			+ hidden field / captcha
+
+	+ /logout ( destroy session and redirect user to / )
+
+	+ /note ( Table of all notes with pagination )
+		GET      /note/:id
+		POST     /note
+		PUT      /note/:id
+		DELETE   /note/:id
+
+	+ /note/#/new
+		= NEW NOTE FORM
+			+ hidden input field for userid
+			+ input field for Note Title
+			+ TextArea for Note Content
+			+ input field for username
+			+ input control for tags
+				+ automatically loads all tags as datalist
+			+ save
+			+ saveToDraft
+	+ /note/#/edit
+		= Same as New note Form, But with hidden input field with noteid
+
+	+ root
+		+ ( When user successfully login )
+		+ ( Allows you to search for a note using Title and tags )
+
+	+ / overview ( list of all note within a single page )
+
++ add new note
++ edit new note
++ delete note
++ list of all notes
++ search for any note
+
+
+
