@@ -24,27 +24,26 @@
 			+ timeAtLogin
 			+ timeAtLogout
 		+ noteHistory
-			+ noteId ( Auto generated ID for note )
-			+ userId ( User ID, who save the content to server )
+			+ noteHid ( Auto generated ID for note )
+			+ userid ( User ID, who save the content to server )
 			+ noteParentId ( Note parent id, when user PUT note to server with an ID )
 			+ noteTitle ( What is title of note given by user )
 			+ noteContent ( What is the content of note )
 			+ tags
 			+ isPublic
-			+ createdAt ( When user did created this note )
+			+ when ( When user did created this note )
 			= User will not be able to access the content of this table.
 			= Even if user did modify the note content that note will be saved into this table.
 			= means full history of any note can be see from here.
 		+ notes
-			+ noteid
-			+ userid
-			+ noteTitle
-			+ noteContent
-			+ Author
+			+ noteid  ( Primary ID )
+			+ userid  ( User Who saved this Note )
+			+ noteTitle  ( Title for saved Note )
+			+ noteContent ( Content for Note )
 			+ tags ( | seperated list of tags )
-			+ score
-			+ isVerfied
-			+ isPublic
+			+ score ( How many time user looked for this )
+			+ isCompleted  (Wheather Notes is Complete or Draft )
+			+ isPublic  ( Wheather this Note is public )
 			+ createdAt ( When user do a POST request to server )
 			+ modifiedAt ( When user do a PUT request to server )
 + API

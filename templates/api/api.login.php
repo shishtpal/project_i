@@ -35,12 +35,15 @@ EOT;
           $timeAtLogin = time();
           $_SESSION['email'] = $row['Email'];
           $_SESSION['userid'] = $row['Id'];
+          $db->query("UPDATE `identity` SET `status`=1 WHERE `Id`=" . $_SESSION['userid']);
+          $db->query("INSERT INTO `loginHistory` (`loginid`, `userid`, `email`, `whichGroup`, `timeAtLogin`) VALUES ('', '" . $row['Id'] . "', '" . $row['Email'] . "', '" .  $row['whichGroup'] . "', '" . $timeAtLogin . "')");
+
           $_SESSION['group'] = $row['whichGroup'];  // user belongs to which group ( root, admin, users)
           $_SESSION['fullname'] = $row['Full_name'];  // fullname of user
-          $_SESSION['status'] = $row['status'];  // online or offline
+          $_SESSION['status'] = 1;  // online or offline
           $_SESSION['createdAt'] = $row['createdAt']; // when did user created this account.
           $_SESSION['timeAtLogin'] = $timeAtLogin;
-          $res = $db->query("INSERT INTO `loginHistory` (`loginid`, `userid`, `email`, `whichGroup`, `timeAtLogin`) VALUES ('', '" . $row['Id'] . "', '" . $row['Email'] . "', '" .  $row['whichGroup'] . "', '" . $timeAtLogin . "')");
+          $_SESSION['loginid'] = $db->insert_id;
           echo "true"; 
         } else {
           echo "false";

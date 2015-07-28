@@ -32,6 +32,8 @@ function isLogin($app){
 * GET     /root
 *    + When root user login to application.
 *
+*
+* GET    /note
 */
 
 $app->get(
@@ -59,16 +61,15 @@ $app->post(
 $app->get(
     '/logout',
     function () use ($app) {
-        $timeAtLogout = time();
-        unset($_SESSION['email']);
-        unset($_SESSION['userid']);
-        unset($_SESSION['group']);
-        unset($_SESSION['fullname']);
-        unset($_SESSION['status']);
-        unset($_SESSION['createdAt']);
-        unset($_SESSION['timeAtLogin']);
-        // Send a UPDATE request to server to update timeAtLogin
+        $app->render("logout.php");
         $app->redirect("/login");
+    }
+);
+
+$app->get(
+    '/note',
+    function () use ($app) {
+        $app->render("note/note.php");
     }
 );
 
