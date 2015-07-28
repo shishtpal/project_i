@@ -16,6 +16,13 @@
 		+ createdAt ( When user did created this account )
 	= Tables
 		+ identity
+		+ loginHistory
+			+ loginid
+			+ userid
+			+ email
+			+ whichGroup
+			+ timeAtLogin
+			+ timeAtLogout
 		+ noteHistory
 			+ noteId ( Auto generated ID for note )
 			+ userId ( User ID, who save the content to server )
