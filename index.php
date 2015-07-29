@@ -44,6 +44,57 @@ $app->get(
 );
 
 $app->get(
+    '/upload', 
+    function () use ($app) {
+        $app->render("uploader/img.upload.php");
+    }
+);
+
+$app->get(
+    '/upload2', 
+    function () use ($app) {
+        $app->render("uploader/img.upload2.php");
+    }
+);
+
+$app->get(
+    '/other', 
+    function () use ($app) {
+        $app->render("other.php");
+    }
+);
+
+$app->post(
+    '/uploads', 
+    function () use ($app) {
+        $app->response->headers->set('Content-Type', 'application/json');
+        $data = $app->request->getBody();
+        $app->render("uploader/post.uploads.php", array("data" => $data));
+    }
+);
+
+$app->get(
+    '/demo', 
+    function () use ($app) {
+        $app->render("demo.php");
+    }
+);
+
+$app->get(
+    '/demo2', 
+    function () use ($app) {
+        $app->render("demo2.php");
+    }
+);
+
+$app->post(
+    '/demo3', 
+    function () use ($app) {
+        $app->render("demo3.php");
+    }
+);
+
+$app->get(
     '/login',
     function () use ($app) {
         $app->render("login.php");
@@ -67,11 +118,44 @@ $app->get(
 );
 
 $app->get(
-    '/note',
+    '/notes',
     function () use ($app) {
-        $app->render("note/note.php");
+        $app->response->headers->set('Content-Type', 'application/json');
+        $app->render("note/get.notes.php");
     }
 );
+
+$app->get(
+    '/notes/:id',
+    function () use ($app) {
+        $app->response->headers->set('Content-Type', 'application/json');
+        $data = (array) json_decode($app->request->getBody());
+        $app->render("note/get.note.php", array("data" => $data));
+    }
+);
+
+
+$app->post(
+    '/notes',
+    function () use ($app) {
+        $app->response->headers->set('Content-Type', 'application/json');
+        $data = json_decode($app->request->getBody());
+        $app->render("note/post.newnote.php", array("data" => $data));
+    }
+);
+
+$app->put(
+    '/users/:id',
+    function () use ($app) {
+        $app->response->headers->set('Content-Type', 'application/json');
+        $data = (array) json_decode($app->request->getBody());
+        // print_r(array_keys($data));
+        // print_r(array_values($data));
+        // print_r($data);
+        $app->render("note/put.updatenote.php", array("data" => $data));
+    }
+);
+
 
 $app->get(
     '/root', 
