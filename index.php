@@ -64,6 +64,13 @@ $app->get(
     }
 );
 
+$app->get(
+    '/tiles', 
+    function () use ($app) {
+        $app->render("tiles.php");
+    }
+);
+
 $app->post(
     '/uploads', 
     function () use ($app) {
