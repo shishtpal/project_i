@@ -13,6 +13,7 @@
 
 <script type="text/template" id="img_upload_comp_template">
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<div class="btn btn-info" id="upload">upload</div>
 <!-- for image file -->
 <div class="thumbnail">
 <img data-src="holder.js/300x300" alt="Upload Image File" src="<%=  image_data_url %>" style="height:300px;width:auto;">

@@ -8,7 +8,7 @@ if(true)
     $error = false;
     $files = array();
 
-    $uploaddir = './img/uploads/';
+    $uploaddir = 'img/uploads/';
     $array_of_filenames = $_FILES['files']['name'];
     $array_of_tempfilenames = $_FILES['files']['tmp_name'];
     $array_of_typesoffiless = $_FILES['files']['type'];

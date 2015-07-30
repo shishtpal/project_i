@@ -58,6 +58,13 @@ $app->get(
 );
 
 $app->get(
+    '/upload3', 
+    function () use ($app) {
+        $app->render("uploader/img.upload3.php");
+    }
+);
+
+$app->get(
     '/other', 
     function () use ($app) {
         $app->render("other.php");
