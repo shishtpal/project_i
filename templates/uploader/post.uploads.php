@@ -17,6 +17,8 @@ if(true)
     $nooffiles = count($array_of_filenames);
 
     for ($i=0; $i < $nooffiles; $i++) { 
+        // Validate Size of Image File Server Side :TODO
+        // Send a request to Server to update list of Image Files Uploaded By any User :TODO
     	$filename = $uploaddir .  md5(time() + rand()) . "__" . basename($array_of_filenames[$i]) ;
     	if (move_uploaded_file($array_of_tempfilenames[$i], $filename)) {
     		$files[$i] = $filename;
