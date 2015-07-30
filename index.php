@@ -102,6 +102,27 @@ $app->get(
 );
 
 $app->get(
+    '/images', 
+    function () use ($app) {
+        $app->render("api/post.images.php");
+    }
+);
+
+$app->get(
+    '/images/all', 
+    function () use ($app) {
+        $app->render("uploader/img.listimages.php");
+    }
+);
+
+$app->get(
+    '/images/all2', 
+    function () use ($app) {
+        $app->render("uploader/img.listimages2.php");
+    }
+);
+
+$app->get(
     '/demo2', 
     function () use ($app) {
         $app->render("demo2.php");

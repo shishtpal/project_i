@@ -1,9 +1,11 @@
 <?php 
 
+require '/templates/db/db.conf.php';
+
 $data = array();
 // print_r($_FILES['files']);
 
-if(true)
+if(isset($_SESSION['email']) && isset($_SESSION['userid']) && isset($_SESSION['group']) && $_SESSION['email'] != "" && $_SESSION['userid'] != "" && $_SESSION['group'] != "")
 {  
     $error = false;
     $files = array();
@@ -19,17 +21,21 @@ if(true)
     for ($i=0; $i < $nooffiles; $i++) { 
         // Validate Size of Image File Server Side :TODO
         // Send a request to Server to update list of Image Files Uploaded By any User :TODO
-    	$filename = $uploaddir .  md5(time() + rand()) . "__" . basename($array_of_filenames[$i]) ;
-    	if (move_uploaded_file($array_of_tempfilenames[$i], $filename)) {
-    		$files[$i] = $filename;
+        $filename = basename($array_of_filenames[$i]);
+    	$gen_filename = $uploaddir .  md5(time() + rand()) . "__" . $filename ;
+    	if (move_uploaded_file($array_of_tempfilenames[$i], $gen_filename)) {
+    		$files[$i] = $gen_filename;
+            $db->query("INSERT INTO `upImage` (`userid`, `ImageTitle`, `ImagePath`, `uploadedAt`) VALUES ('" . $_SESSION['userid'] . "', '" . $filename . "', '" . $gen_filename . "', '" . time() . "')");
     	} else {
     		$error = true;
     	}
     }
 
     // $data = ($error) ? array('error' => 'There was an error uploading your files') : array('files' => $files);
+    echo json_encode($files);
+} else {
+    echo "false";
 }
 
-echo json_encode($files);
 
 ?>

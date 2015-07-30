@@ -26,6 +26,12 @@ $noteHistorySchema =<<<"EOT"
 CREATE TABLE IF NOT EXISTS `noteHistory` ( `noteHid` INT(50) NOT NULL AUTO_INCREMENT ,  `userid` INT(50) NOT NULL ,  `noteParentId` INT(50) NOT NULL ,  `noteTitle` VARCHAR(250) NOT NULL ,  `noteContent` TEXT NOT NULL ,  `tags` VARCHAR(250) NOT NULL ,  `isPublic` INT NOT NULL ,  `when` VARCHAR(250) NOT NULL ,    PRIMARY KEY  (`noteHid`) )
 EOT;
 
+// uploaded Images schema
+$uploadedImages =<<<"EOT"
+CREATE TABLE IF NOT EXISTS `upImage` ( `imageid` INT(50) NOT NULL AUTO_INCREMENT , `userid` INT(50) NOT NULL , `ImageTitle` VARCHAR(250) NOT NULL , `ImagePath` VARCHAR(250) NOT NULL , `isPublic` INT(50) NOT NULL , `uploadedAt` VARCHAR(250) NOT NULL , PRIMARY KEY (`imageid`) )
+EOT;
+
+
 // grap a MySQLi Object from this Connection
 $db = new mysqli("localhost", "root", "", $databaseName, 3306);
 
@@ -35,6 +41,7 @@ if (!$db->connect_errno) {
 	$db->query($loginhistorySchema);
 	$db->query($noteSchema);
 	$db->query($noteHistorySchema);
+	$db->query($uploadedImages);
 	// echo $db->connect_errno;
 } else {
 	echo "Failed to connect to database.";

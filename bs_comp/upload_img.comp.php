@@ -105,18 +105,22 @@ You can wrap this into, .container-fluid > .container
                    return myXhr;
                 },
                 success: function(data) {
-                    	 $('#progressBarCon').addClass("hidden");
-                         var __temp = _.template($("#img_upload_comp_template").html());
-                         $.each(data, function(__i, __j){
-                             $("#loadSelectedImages").prepend(__temp({
-                                image_data_url: img_data[__i],
-                                server_path: __j
-                             }));
-                         });
-                         refresh();
-                    	//appends the currently uploaded images in  a div
-                     }
-                });
+                	 $('#progressBarCon').addClass("hidden");
+                    if (data == false){
+                        alert("Session has been expired!");
+                        return false;
+                    }
+                     var __temp = _.template($("#img_upload_comp_template").html());
+                     $.each(data, function(__i, __j){
+                         $("#loadSelectedImages").prepend(__temp({
+                            image_data_url: img_data[__i],
+                            server_path: __j
+                         }));
+                     });
+                     refresh();
+                	//appends the currently uploaded images in  a div
+                 }
+            });
          }
     });
 

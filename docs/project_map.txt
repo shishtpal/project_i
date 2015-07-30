@@ -46,6 +46,13 @@
 			+ isPublic  ( Wheather this Note is public )
 			+ createdAt ( When user do a POST request to server )
 			+ modifiedAt ( When user do a PUT request to server )
+		+ upImage
+			+ imageid
+			+ userid
+			+ ImageTitle
+			+ ImagePath
+			+ isPublic
+			+ uploadedAt
 + API
 	+ /
 	+ /login
