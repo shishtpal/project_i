@@ -44,6 +44,13 @@ $app->get(
 );
 
 $app->get(
+    '/datagrid', 
+    function () use ($app) {
+        $app->render("datagrid/demo.php");
+    }
+);
+
+$app->get(
     '/upload', 
     function () use ($app) {
         $app->render("uploader/img.upload.php");
